@@ -1,0 +1,244 @@
+---
+# Homepage configuration
+# See https://fontawesome.com/v5/search for icons options
+
+title: "t1mz homelab services"
+subtitle: "Homer"
+logo: "logo.png"
+# icon: "fas fa-skull-crossbones" # Optional icon
+
+header: true
+footer: false # set false if you want to hide it.
+
+# Optional theme customization
+theme: default
+colors:
+  light:
+    highlight-primary: "#3367d6"
+    highlight-secondary: "#4285f4"
+    highlight-hover: "#5a95f5"
+    background: "#f5f5f5"
+    card-background: "#ffffff"
+    text: "#363636"
+    text-header: "#ffffff"
+    text-title: "#303030"
+    text-subtitle: "#424242"
+    card-shadow: rgba(0, 0, 0, 0.1)
+    link: "#3273dc"
+    link-hover: "#363636"
+  dark:
+    highlight-primary: "#3367d6"
+    highlight-secondary: "#4285f4"
+    highlight-hover: "#5a95f5"
+    background: "#131313"
+    card-background: "#2b2b2b"
+    text: "#eaeaea"
+    text-header: "#ffffff"
+    text-title: "#fafafa"
+    text-subtitle: "#f5f5f5"
+    card-shadow: rgba(0, 0, 0, 0.4)
+    link: "#3273dc"
+    link-hover: "#ffdd57"
+
+# Optional navbar
+# links: [] # Allows for navbar (dark mode, layout, and search) without any links
+links:
+  - name: "Cloudfare"
+    icon: "fas fa-cloud"
+    url: "https://one.dash.cloudflare.com/8a253dc844b35e546f5c0a8ef2f0e89f/access/tunnels/0e5a6fd6-d8ad-40c1-bb06-0362be63e8c1/edit"
+    target: "_blank" # optional html a tag target attribute
+  # - name: "Wiki"
+  #   icon: "fas fa-book"
+  #   url: "https://www.wikipedia.org/"
+  # this will link to a second homer page that will load config from additional-page.yml and keep default config values as in config.yml file
+  # see url field and assets/additional-page.yml.dist used in this example:
+  #- name: "another page!"
+  #  icon: "fas fa-file-alt"
+  #  url: "#additional-page" 
+
+  - name: Edit config
+    icon: fas fa-cog
+    url: https://code.home.phuchoang.sbs/?folder=/config/workspace/
+    target: "_blank" # optional html tag target attribute
+
+# Services
+# First level array represent a group.
+# Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
+services:
+  - name: "Network"
+    icon: "fas fa-network-wired"
+    items:
+      - name: "VTV Cab"
+        logo: "assets/logo/router.png"
+        url: "https://192.168.1.1"
+        target: "_blank"
+
+      - name: "OpenWRT"
+        logo: "assets/logo/openwrt.png"
+        url: "http://192.168.1.3/"
+        target: "_blank"
+
+      - name: "Adguard Home"
+        logo: "assets/logo/adguard-home.png"
+        url: "https://adguard.home.phuchoang.sbs/"
+        target: "_blank"
+        type: "AdGuardHome"
+
+      - name: "Nginx Proxy Manager"
+        logo: "assets/logo/nginx-proxy-manager.png"
+        url: "http://192.168.1.21:81"
+        target: "_blank"
+
+  - name: "Management"
+    icon: "fas fa-server"
+    items:    
+      - name: "Proxmox - Node"
+        logo: "assets/logo/proxmox-light.png"
+        url: "https://192.168.1.16:8006/"
+        target: "_blank"
+        type: "Proxmox"
+        node: "pve"
+        warning_value: 50
+        danger_value: 80
+        api_token: "PVEAPIToken=homer@pam!L35UQ7EXuN9Hm3NyAsQpKB7r=09080ba7-1677-4310-9f6c-f582aa9e4272"
+        # values below this line are optional (default value are false/empty):
+        hide_decimals: true # removes decimals from stats values.
+        hide: [] # hides information. Possible values are "vms", "vms_total", "lxcs", "lxcs_total", "disk", "mem" and "cpu".
+        small_font_on_small_screens: true # uses small font on small screens (like mobile)
+        small_font_on_desktop: true # uses small font on desktops (just in case you're showing much info)
+
+
+      - name: "Portainer"
+        logo: "assets/logo/portainer.png"
+        url: "https://portainer.home.phuchoang.sbs/"
+        target: "_blank"
+        type: "Portainer"
+        apikey: "ptr_n7RrFxTs57w7x8S526i52oMcX+2eOxDCX8tN2paiHv0="
+        environments:
+          - "local"
+        
+      - name: "Synology NAS"
+        logo: "assets/logo/synology-dsm.png"
+        url: "http://192.168.1.2:5000"
+        target: "_blank"
+
+  - name: "Website"
+    icon: "fas fa-globe"
+    items:
+      - name: "Wordpress"
+        logo: "assets/logo/wordpress.png"
+        url: "https://192.168.1.20"
+        target: "_blank"
+
+      - name: "Webmin"
+        logo: "assets/logo/webmin.png"
+        url: "https://192.168.1.20:12321/sysinfo.cgi?xnavigation=1"
+        target: "_blank"
+
+  - name: "Media"
+    icon: "fas fa-film"
+    items:
+      - name: "Jellyseerr"
+        logo: "assets/logo/jellyseerr.png"
+        url: "http://192.168.1.4:5055"
+        target: "_blank"    
+      
+      - name: "Radarr"
+        logo: "assets/logo/radarr.png"
+        url: "http://192.168.1.4:7878/"
+        target: "_blank"
+        type: "Radarr"
+        apikey: "babcc27345ef480180274f5ebbf40f4b"
+
+      - name: "Sonarr"
+        logo: "assets/logo/sonarr.png"
+        url: "http://192.168.1.4:8989/"
+        target: "_blank"
+        type: "Sonarr"
+        apikey: "a90bf567dda74aeca204b795d3693039"
+      
+      - name: "Bazarr"
+        logo: "assets/logo/bazarr.png"
+        url: "http://192.168.1.4:6767/"
+        target: "_blank"
+
+      - name: "Jellyfin"
+        logo: "assets/logo/jellyfin.png"
+        url: "http://192.168.1.6:8096/"
+        target: "_blank"
+        type: "Emby"
+        apikey: "958b2848375e4ebd8a2d846987446f49"
+        libraryType: "movies"
+
+  - name: "Book"
+    icon: "fas fa-book"
+    items:
+      - name: "Readarr"    
+        logo: "assets/logo/readarr.png"
+        url: "http://192.168.1.4:8787/"
+        target: "_blank"
+        type: "Readarr"
+        apikey: "2a5f9079d90b45f0929987107f55ba53"
+
+      - name: "Speakarr"
+        logo: "assets/logo/headphones.png"
+        url: "http://192.168.1.4:8788/"
+        target: "_blank"
+        type: "Readarr"
+        apikey: "7ad01607ba0f44a5ba5987e5d1e74682"
+
+      - name: "Calibre"
+        logo: "assets/logo/calibre.png"
+        url: "http://192.168.1.4:8082/"
+        target: "_blank"
+
+      - name: "Audiobookshelf"
+        logo: "assets/logo/audiobookshelf.png"
+        url: "http://192.168.1.4:13378/"
+        target: "_blank"
+
+      # - name: "Kavita"
+      #   logo: "https://wiki.kavitareader.com/user/pages/01.home/kavita-logo3.png"
+      #   url: "http://192.168.1.4:5000"
+      #   target: "_blank"
+
+  - name: "Downloader"
+    icon: "fas fa-download"
+    items:
+      - name: "qBittorrent"
+        logo: "assets/logo/qbittorrent.png"
+        url: "https://qbit.home.phuchoang.sbs/"
+        target: "_blank"
+        type: "qBittorrent"
+        rateInterval: 2000 # Interval for updating the download and upload rates.
+        torrentInterval: 5000 # Interval for updating the torrent count.
+
+      - name: "Metube"
+        logo: "assets/logo/youtubedl.png"
+        url: "http://192.168.1.4:8083/"
+        target: "_blank"
+
+      - name: "Prowlarr"
+        logo: "assets/logo/prowlarr.png"
+        url: "http://192.168.1.4:9696/"
+        target: "_blank"  
+        type: "Prowlarr"
+        apikey: "2845e2e65f98438f8c3e54b580384252"
+
+  - name: "Automation"
+    icon: "fas fa-robot"
+    items:
+      - name: "Home Assistant"
+        logo: "assets/logo/home-assistant-alt.png"
+        url: "http://192.168.1.11:8123"
+        target: "_blank"
+    
+      - name: "Frigate"
+        logo: "assets/logo/frigate.png"
+        url: "http://192.168.1.15:5000"
+        target: "_blank"
+
+      - name: "Hik-Vision"
+        logo: "assets/logo/hikvision.png"
+        url: "http://192.168.1.7:81"
+        target: "_blank"
